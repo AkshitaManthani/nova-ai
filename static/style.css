@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0f172a;
+    color: white;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: #020617;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.sidebar button {
+    padding: 10px;
+    background: #6366f1;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Chat Section */
+.chat-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    padding: 15px;
+    border-bottom: 1px solid #1e293b;
+}
+
+/* Chat Box */
+.chat-box {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Messages */
+.user-msg {
+    background: #6366f1;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    max-width: 60%;
+    align-self: flex-end;
+}
+
+.bot-msg {
+    background: #1e293b;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    max-width: 60%;
+    align-self: flex-start;
+}
+
+/* Input */
+.input-area {
+    display: flex;
+    padding: 10px;
+    background: #020617;
+}
+
+.input-area input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+.input-area button {
+    margin-left: 10px;
+    padding: 10px;
+    background: #6366f1;
+    border: none;
+    color: white;
+    border-radius: 8px;
+}

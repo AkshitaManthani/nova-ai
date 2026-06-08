@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nova AI</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">⚡ Nova</div>
+        <button onclick="newChat()">+ New Chat</button>
+    </div>
+
+    <!-- Chat Section -->
+    <div class="chat-section">
+
+        <div class="chat-header">
+            <h2>Nova AI</h2>
+        </div>
+
+        <div id="chat-box" class="chat-box"></div>
+
+        <div class="input-area">
+            <input id="user-input" type="text" placeholder="Ask anything...">
+            <button onclick="sendMessage()">➤</button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function addMessage(sender, text) {
+    let chatBox = document.getElementById("chat-box");
+
+    let msg = document.createElement("div");
+    msg.className = sender === "user" ? "user-msg" : "bot-msg";
+    msg.innerText = text;
+
+    chatBox.appendChild(msg);
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+async function sendMessage() {
+    let input = document.getElementById("user-input");
+    let message = input.value;
+
+    if (message === "") return;
+
+    addMessage("user", message);
+    input.value = "";
+
+    let response = await fetch("/chat", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({message: message})
+    });
+
+    let data = await response.json();
+    addMessage("bot", data.reply);
+}
+
+function newChat() {
+    document.getElementById("chat-box").innerHTML = "";
+    addMessage("bot", "Hi, I'm Nova ⚡ How can I help you today?");
+}
+
+// Initial greeting
+window.onload = () => {
+    addMessage("bot", "Hi, I'm Nova ⚡ How can I help you today?");
+};
+</script>
+
+</body>
+</html>
